@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026最新OpenClaw本地部署喂饭级教程</title>
+  <style>
+    :root {
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --bg-body: #f3f4f6;
+      --bg-card: #ffffff;
+      --border: #e5e7eb;
+      --accent: #3b82f6;
+      --accent-light: #dbeafe;
+      --success: #10b981;
+      --success-light: #d1fae5;
+      --warning: #f59e0b;
+      --warning-light: #fef3c7;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg-body);
+      color: var(--text-primary);
+      line-height: 1.85;
+      font-size: 16px;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 40px;
+    }
+    
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    
+    .meta {
+      color: var(--text-secondary);
+      font-size: 14px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    
+    .meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 40px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+    }
+    
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      margin-bottom: 18px;
+      text-align: justify;
+      word-wrap: break-word;
+    }
+    
+    ul, ol {
+      margin: 20px 0;
+      padding-left: 28px;
+    }
+    
+    li {
+      margin-bottom: 12px;
+      position: relative;
+    }
+    
+    ul li::marker {
+      color: var(--accent);
+      font-size: 1.2em;
+    }
+    
+    blockquote {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #1e40af;
+    }
+    
+    blockquote p {
+      margin: 0;
+    }
+    
+    .callout {
+      background: var(--success-light);
+      border-left: 4px solid var(--success);
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .callout strong {
+      color: #065f46;
+    }
+    
+    .warning {
+      background: var(--warning-light);
+      border-left-color: var(--warning);
+    }
+    
+    .warning strong {
+      color: #92400e;
+    }
+    
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+    
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    
+    a:hover {
+      border-bottom-color: var(--accent);
+    }
+    
+    code {
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: "SF Mono", Monaco, monospace;
+      font-size: 0.9em;
+      color: #e11d48;
+    }
+    
+    strong {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    em {
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+    
+    .footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px;
+        border-radius: 12px;
+      }
+      
+      h1 {
+        font-size: 26px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
+      
+      body {
+        padding: 12px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>2026最新OpenClaw本地部署喂饭级教程</h1>
+      <div class="meta">
+        <span>👤 阿绎 · 认知代码 @AYi_AInotes</span>
+        <span>📅 2026-02-26</span>
+      </div>
+    </header>
+    
+    <article class="content">
+<p>作者：阿绎 · 认知代码</p>
+<p>账号：@AYi_AInotes</p>
+<h2>2026最新OpenClaw本地部署喂饭级教程，不懂代码的纯新手，跟着做也能零踩坑、零成本拥有专属私人AI助理</h2>
+<p>全程保姆喂饭级指引，每个操作都标注&quot;点击哪里、复制什么、粘贴到哪里&quot;，包含可直接复用的代码命令、异常排查方案，不改变原意、不添加冗余内容，哪怕是完全不懂电脑技术、不懂代码的纯新手，跟着做也能零踩坑，轻松拥有专属私人AI助理。</p>
+<p>本文基于2026年2月OpenClaw最新稳定版（v2026.2.2-cn）、OpenClaw中国社区实测数据及新手高频踩坑反馈，全网整合最优流程重写，兼顾本地部署（零成本首选），重点拆解本地部署每一个细节，10分钟内搞定部署，开启AI自动化办公、日常辅助的便捷体验。</p>
+<h3>一、核心前提：打破误区，明确两种部署方式的区别（新手必看）</h3>
+<p>在开始部署前，先明确本地部署与上一篇阿里云简单部署的核心区别，根据自身需求选择，避免盲目操作，两种方式均适配2026年最新版OpenClaw，新手无需纠结技术细节，按需选择即可：</p>
+<h3>二、本地部署：零成本，10分钟搞定（新手首选，全程保姆级）</h3>
+<p>本地部署是最适合新手的方式，全程免费、操作极简，无需购买云服务器、无需开通任何付费服务，只要有一台普通电脑，跟着以下步骤操作，10分钟就能完成部署，开启私人AI助理之旅。全程分为&quot;前置准备、环境配置、OpenClaw部署、验证使用、基础优化&quot;5个步骤，每个步骤都有详细指引，代码可直接复制复用，零代码基础也能轻松搞定。</p>
+<h4>（一）前置准备（1分钟搞定，零难度）</h4>
+<p>无需下载复杂工具，仅需准备2件事，确保后续部署不中断，新手必做：</p>
+<ul>
+<li>电脑配置检查（必做）：确认电脑满足最低要求（无需高端配置），具体如下：CPU：Intel i3 4代+/AMD Ryzen 3 2000+（支持虚拟化，需在BIOS中开启，步骤见常见坑1）； 内存：最低2GiB（建议4GiB，开启轻量化配置可适配2GiB）； 存储：最低40GiB SSD（机械硬盘需优化读写，步骤见下文）； 系统：Windows 10 64位+/MacOS 12+/Linux（Ubuntu 20.04 LTS+），Windows 7不兼容，请勿尝试； 网络：仅部署时需要联网（下载依赖包），部署完成后，基础功能（如对话、本地文件处理）无需联网。</li>
+</ul>
+<ul>
+<li>必备工具下载（零难度，直接点击下载）：核心依赖：Node.js v22+（必须≥v22.0.0，国内镜像下载，无需手动配置环境变量）； 辅助工具：Git（用于下载OpenClaw代码，国内镜像适配版）； 包管理器：pnpm（强制推荐，npm在处理依赖树时可能会卡死，部署时自动安装）； 本地模型核心：Ollama v0.15.4+（可选，用于本地运行大模型，无需对接第三方API，新手可先跳过，后续补充）。</li>
+</ul>
+<h4>（二）环境配置（3分钟搞定，复制粘贴代码即可）</h4>
+<p>这一步是本地部署的核心，主要安装并配置Node.js、Git、pnpm，全程复制粘贴代码，无需手动操作，分Windows、Mac/Linux两种系统，新手根据自己的电脑系统选择对应步骤，不要混淆。</p>
+<p>#### 1. Windows系统（优先WSL2，无WSL2则用原生系统，新手首选原生）</p>
+<p>操作步骤：打开电脑，以<strong>管理员身份</strong>打开PowerShell（按下Win+X，选择&quot;Windows PowerShell（管理员）&quot;），然后依次复制以下代码，粘贴到PowerShell中，每粘贴一行，按一次回车键执行，全程无需修改任何内容，耐心等待执行完成即可（执行速度取决于网络，一般3分钟内搞定）。</p>
+<p>#### 2. Mac/Linux系统（含WSL2，轻量化首选，操作更简洁）</p>
+<p>操作步骤：打开电脑的&quot;终端&quot;（Mac按下Command+空格，输入&quot;终端&quot;打开；Linux直接打开终端），依次复制以下代码，粘贴到终端中，每粘贴一行，按一次回车键执行，全程无需修改，3分钟内即可完成。</p>
+<p>#### 环境配置验证（必做，避免后续部署失败）</p>
+<p>执行完以上所有代码后，依次输入以下3条命令，验证环境是否配置成功，若全部输出对应版本号，说明环境配置无误，可进入下一步；若提示&quot;command not found&quot;，重新执行对应安装命令即可。</p>
+<h4>（三）OpenClaw本地部署（5分钟搞定，全程复制粘贴，零代码）</h4>
+<p>环境配置完成后，进入核心部署步骤，全程5分钟左右，主要是下载OpenClaw代码、安装依赖、启动服务，步骤极简，新手跟着操作即可，分Windows、Mac/Linux两种系统，代码通用，仅部分路径略有差异，无需担心。</p>
+<p>#### 步骤1：下载OpenClaw代码（国内镜像，高速下载）</p>
+<p>打开PowerShell（Windows）或终端（Mac/Linux），复制以下代码，粘贴后按回车键执行，自动从Gitee国内镜像仓库下载代码，避免海外仓库下载超时（新手无需修改任何内容）：</p>
+<p>#### 步骤2：配置国内加速，安装依赖（关键步骤，避免下载超时）</p>
+<p>继续在当前目录（openclaw-cn）下，复制以下代码，依次执行，配置pnpm国内镜像，安装OpenClaw所需的全部依赖，全程自动完成，无需手动干预，耐心等待即可（执行速度取决于网络，一般2-3分钟）：</p>
+<p>#### 步骤3：启动初始化向导，配置基础参数（零难度，交互式操作）</p>
+<p>依赖安装完成后，执行初始化向导，自动配置基础参数，无需手动修改，新手只需按提示操作即可，代码直接复制执行：</p>
+<p>#### 步骤4：启动OpenClaw服务（最后一步，部署完成）</p>
+<p>初始化完成后，继续在当前目录下，复制以下代码，粘贴后按回车键执行，启动OpenClaw网关服务，无需手动操作，启动成功后即可使用：</p>
+<p>启动成功的标志：终端输出&quot;Gateway started successfully on <a href="http://127.0.0.1:18789&quot;，此时OpenClaw本地部署已全部完成，无需再执行任何命令，直接进入验证使用步骤。" target="_blank" rel="noopener">http://127.0.0.1:18789&quot;，此时OpenClaw本地部署已全部完成，无需再执行任何命令，直接进入验证使用步骤。</a></p>
+<h4>（四）验证使用（1分钟搞定，零代码，感受AI助理魅力）</h4>
+<p>部署完成后，快速验证OpenClaw是否能正常使用，全程鼠标点击，无需代码，新手可直接体验私人AI助理的便捷性：</p>
+<ul>
+<li>打开浏览器（Chrome/Edge均可），在地址栏中输入&quot;<a href="http://127.0.0.1:18789&quot;，按回车键，自动跳转至OpenClaw" target="_blank" rel="noopener">http://127.0.0.1:18789&quot;，按回车键，自动跳转至OpenClaw</a> Web控制台（全中文界面，新手无压力）；</li>
+</ul>
+<ul>
+<li>首次进入控制台，无需登录，直接进入对话界面，在输入框中发送简单指令（如&quot;生成一句早安问候语&quot;&quot;帮我在桌面上创建一个名为hello_openclaw.txt的文件，并在里面写入：大道至简，实战落地&quot;&quot;介绍一下你自己&quot;）；</li>
+</ul>
+<ul>
+<li>点击【发送】，等待1-2秒，OpenClaw会自动生成回复，或执行对应操作（如创建文件），若能正常收到回复、完成操作，说明本地部署成功，私人AI助理已正式可用；</li>
+</ul>
+<ul>
+<li>测试基础技能：发送指令&quot;现在有哪些可用的Skills？&quot;，OpenClaw会返回当前已集成的基础技能（如文件管理、对话生成），后续可安装更多技能，拓展AI助理能力（步骤见下文）。</li>
+</ul>
+<h4>（五）本地部署基础优化（可选，新手可后续学习，提升使用体验）</h4>
+<p>部署完成后，可执行以下优化操作，提升OpenClaw运行速度，避免卡顿、闪退，代码可直接复制复用，适合有进阶需求的新手：</p>
+<h3>本地部署常见异常排查（新手必看，遇到问题直接查）</h3>
+<p>新手本地部署时，可能会遇到&quot;环境配置失败&quot;&quot;服务启动失败&quot;&quot;控制台无法访问&quot;等问题，无需慌张，以下是最常见的6个问题，每个问题都附原因+解决方案，代码可直接复制复用，跟着操作就能解决，零技术基础也能搞定。</p>
+<ul>
+<li>问题1：执行&quot;node -v&quot;提示&quot;command not found&quot;（Node.js安装失败）原因：安装包未正确安装、环境变量未配置成功； 解决方案：重新执行对应系统的Node.js安装命令，安装完成后，重新配置环境变量（Linux/Mac执行source ~/.bashrc，Windows重启PowerShell），再次验证即可。</li>
+</ul>
+<ul>
+<li>问题2：执行&quot;pnpm install&quot;提示&quot;下载超时/依赖安装失败&quot;原因：网络不稳定、未配置国内镜像、防火墙拦截；</li>
+</ul>
+<h4>问题3：启动服务时，提示&quot;端口18789被占用&quot;</h4>
+<ul>
+<li>原因：其他应用正在使用18789端口，导致OpenClaw无法启动；</li>
+</ul>
+<ul>
+<li>解决方案（代码直接复制）：</li>
+</ul>
+<h4>问题4：浏览器访问&quot;http://127.0.0.1:18789&quot;提示&quot;无法访问&quot;</h4>
+<ul>
+<li>原因：OpenClaw服务未正常启动、端口未放行、防火墙拦截；</li>
+</ul>
+<ul>
+<li>解决方案： ① 重新启动OpenClaw服务（执行node openclaw.mjs gateway --port 18789 --verbose）； ② 关闭电脑防火墙，重新访问； ③ 检查端口是否放行，执行以下命令（Mac/Linux）：</li>
+</ul>
+<h4>问题5：发送指令后，OpenClaw无响应、闪退</h4>
+<ul>
+<li>原因：电脑内存不足、OpenClaw内存占用过高、依赖缺失；</li>
+</ul>
+<ul>
+<li>解决方案： ① 关闭电脑中其他无用应用，释放内存； ② 限制OpenClaw内存占用，执行以下命令启动服务：</li>
+</ul>
+<p>③ 重新安装依赖，执行pnpm install --force，再次启动服务。</p>
+<h4>问题6：Windows系统提示&quot;权限不足，无法执行命令&quot;</h4>
+<p>原因：未以管理员身份打开PowerShell，导致无法执行安装、启动命令； 解决方案：关闭当前PowerShell，重新以&quot;管理员身份&quot;打开PowerShell，再次执行对应命令即可。</p>
+    </article>
+    
+    <footer class="footer">
+      <p>来源：<a href="https://x.com/ayi_ainotes/status/2026616734829129989?s=52" target="_blank" rel="noopener">https://x.com/ayi_ainotes/status/2026616734829129989?s=52</a></p>
+    </footer>
+  </div>
+</body>
+</html>
