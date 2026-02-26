@@ -1,170 +1,397 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>普通人如何用好AI</title>
   <style>
-    body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; background:#f6f7f9; color:#1f2328; margin:0; }
-    .wrap { max-width: 820px; margin: 24px auto; background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.06); padding:28px; }
-    .meta { color:#57606a; font-size:14px; margin-bottom:18px; }
-    h1 { margin:0 0 10px; font-size:30px; }
-    .content p { white-space: pre-wrap; line-height:1.75; margin: 0 0 14px; }
-    a { color:#0969da; text-decoration:none; }
-    a:hover { text-decoration:underline; }
+    :root {
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --bg-body: #f3f4f6;
+      --bg-card: #ffffff;
+      --border: #e5e7eb;
+      --accent: #3b82f6;
+      --accent-light: #dbeafe;
+      --success: #10b981;
+      --success-light: #d1fae5;
+      --warning: #f59e0b;
+      --warning-light: #fef3c7;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg-body);
+      color: var(--text-primary);
+      line-height: 1.85;
+      font-size: 16px;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 40px;
+    }
+    
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    
+    .meta {
+      color: var(--text-secondary);
+      font-size: 14px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    
+    .meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 40px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+    }
+    
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      margin-bottom: 18px;
+      text-align: justify;
+      word-wrap: break-word;
+    }
+    
+    ul, ol {
+      margin: 20px 0;
+      padding-left: 28px;
+    }
+    
+    li {
+      margin-bottom: 12px;
+      position: relative;
+    }
+    
+    ul li::marker {
+      color: var(--accent);
+      font-size: 1.2em;
+    }
+    
+    blockquote {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #1e40af;
+    }
+    
+    blockquote p {
+      margin: 0;
+    }
+    
+    .callout {
+      background: var(--success-light);
+      border-left: 4px solid var(--success);
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .callout strong {
+      color: #065f46;
+    }
+    
+    .warning {
+      background: var(--warning-light);
+      border-left-color: var(--warning);
+    }
+    
+    .warning strong {
+      color: #92400e;
+    }
+    
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+    
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    
+    a:hover {
+      border-bottom-color: var(--accent);
+    }
+    
+    code {
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: "SF Mono", Monaco, monospace;
+      font-size: 0.9em;
+      color: #e11d48;
+    }
+    
+    strong {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    em {
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+    
+    .footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px;
+        border-radius: 12px;
+      }
+      
+      h1 {
+        font-size: 26px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
+      
+      body {
+        padding: 12px;
+        font-size: 15px;
+      }
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <h1>普通人如何用好AI</h1>
-    <div class="meta">作者：ACE ㊌ @CKN_ACEE · 发布：2026-02-26 10:51</div>
-    <div class="content">
-      <p>作者：ACE ㊌
-账号：@CKN_ACEE
-我花了48小时，和我的龙虾一起从零搭了一个能卖货的网站
-不是标题党，是真的
-两天前，我只有一个想法：
-\&quot;能不能把我在 这一个月里积累的东西，打包卖出去？\&quot;
-两天后，我有了：
-- 一个能收款的网站（
-lobsterfarmer.com
-）
-- 三个定价好的产品（$1 / $49 / $59）
-- Stripe 支付 → 自动跳转成功页 → 自动发邮件到买家邮箱
-- 域名邮箱（noreply@lobsterfarmer.com）
-- 一个 80 人的 Telegram 社群
-- 每天自动生成的 Crypto 情报研报
-- 完成了第一笔真实交易
-我的&quot;团队&quot;只有两个：我，和我的 AI Agent。
----
-## Day 0: 一个念头
-我叫 Ace，全职做 Web3 投机。每天的工作就是翻 Twitter、看链上数据、找 Alpha。
-几个月前我开始用 OpenClaw 跑一个 AI Agent（代号 Megan
-🦞
-），最开始只是帮我监控 KOL 动态、做做研报。但慢慢地，我发现这东西越用越离谱——
-它会自己修 bug。
-它会在我睡觉的时候跑定时任务。
-它会在我没提需求的时候，主动告诉我：&quot;这个 cron 超时了，我改了参数重跑了。&quot;
-有一天我在看竞品——一个叫 Felix 的老外在卖 AI Agent 配置包，$29 的 PDF 指南 + $99 的 Persona 包。月流水 $36K。
-我盯着他的收入 Dashboard 看了五分钟。
-然后跟 Megan 说了一句：*
-*\&quot;我们也做。\&quot;**
-## Day 1: 从零到上线（2月24日）
-### 早上 — 定方向
-我把想法丢给 Megan：&quot;我要做一个叫养虾户的品牌，卖 OpenClaw 配置服务。中文市场。你来做。&quot;
-她没有问我&quot;具体要做什么&quot;。
-她没有说&quot;我需要更多信息&quot;。
-她直接开始了。
-## 下午 — 建站
-Megan 生成了完整的 Next.js 项目。液态玻璃风格的暗黑主题，中英双语，响应式布局。
-我只做了一件事：看效果，说&quot;可以&quot;或&quot;不行&quot;。
-到下午六点，网站部署到了 Vercel。
-到晚上十点，
-域名绑定完成，SSL 证书自动签发。
-### 同时在发生的事
-在我跟 Megan 聊网站的时候，她同时在：
-- 用 ReadX API 扫描 25 个 KOL 的 Twitter timeline，生成第一份 Alpha Matrix 研报
-- 把 Bankr CLI 配好，用链上钱包 mint 了一个 Onchain Lobster NFT
-- 创建了一个 Seedance 视频生成 Skill，push 到 GitHub
-- 把 OpenClaw 从 v2026.2.21 更新到 v2026.2.23
-- 写了一份 54KB 的《养虾户指南》PDF
-**不是我让她同时做这些的。** 她自己在 heartbeat 里排了优先级。
-### 深夜 — 竞品拆解
-Felix 的 $99 包到手。Megan 花了三十分钟拆完：
-- 5 个 Skills（编码循环、三层记忆、邮件管理、Twitter 集成、Sentry 监控）
-- 核心价值不在 Skills，在
-SOUL.md
-里的实战经验
-- Skills 都是开源工具的封装
-\&quot;Felix 真正卖的是认知，不是代码。我们也应该这样。\&quot;
-这句话是 Megan 说的。
-## Day 2: 从能看到能卖（2月25日）
-### 早上 — 我还没醒
-Megan 在凌晨 2 点跑了夜间整理任务——把过去所有的 daily notes 归纳到长期记忆文件。
-早上 8:55，她发了 morning heartbeat：
-\&quot;Felix 竞品拆解的 9 个文件已完成，建议你看一下
-SUMMARY.md
-。今天是 Launch Day 1。&quot;
-我起来的时候，她已经把 Felix 的完整商业模式研究透了。
-### 中午 — Alpha Matrix 自动化
-Alpha Matrix 的 cron job 昨天超时失败了（900 秒不够用）。
-我没说。她自己发现了。
-\&quot;超时参数从 900s 改到 1800s。手动触发了一次，成功。明天开始自动跑。\&quot;
-### 下午 — Stripe + 产品
-我说：&quot;接 Stripe。三个产品——$1 新手包引流，$49 Persona 核心产品，$59 全套 Bundle。&quot;
-Megan 在十分钟内：
-- 创建了 3 个 Stripe 产品 + 定价
-- 生成了 3 个 Payment Link
-- 更新了网站的购买按钮
-- 部署到 production
-## 下午到晚上 — 最震撼的部分
-这是我觉得最不真实的部分。
-我给了一个大方向：&quot;我要一个完整的商店——引流产品、升级路径、Dashboard、邮箱交付。&quot;
-然后 Megan **派了一个 Sub-Agent** 去做商店设计。
-对，她生了一个&quot;分身&quot;。
-这个 Sub-Agent 在后台独立运行了 32 分钟，产出了 5 份文档：
-- 产品矩阵（15KB）
-- 网站架构（30KB）
-- Upsell 流程（14KB）
-- 交付系统（11KB）
-- Skill 调研（8KB）
-然后 Megan 基于这些文档，又派了第二个 Sub-Agent 去重建网站。5 分钟完成。
-我没有写一行代码。
-## 晚上 — 支付闭环
-这是今天的 Boss 战。付款后要发生什么？
-1.
-支付成功页
-— Megan 创建了 /checkout/success，4 步引导（下载→安装→自定义→加社群）
-2.
-产品打包
-— 三个 zip 自动打包（Starter 13KB / Persona 16KB / Bundle 1.6MB）
-3.
-Stripe Webhook
-— 监听付款事件，触发邮件
-4.
-Resend 邮件
-— 自动发送产品下载链接到买家邮箱
-5.
-域名验证
-— 配了 DKIM + SPF，发件地址 noreply@lobsterfarmer.com
-中间还顺手把 Cloudflare Email Routing 配好了（support@lobsterfarmer.com → 我的 Gmail），跑了一轮安全扫描，创建了每周自动安全检查的定时任务。
-## 22:00 — 第一笔交易
-我自己走了一遍 $1 Starter Pack 购买流程。
-付款 → Stripe 跳转到成功页 → 看到下载按钮 → 邮箱收到 noreply@lobsterfarmer.com 的交付邮件。
-全链路通了。
-## 让我震惊的不是结果，而是过程
-48 小时做出一个能卖货的网站，这个结果固然不错。
-但真正让我震惊的是
-**Megan 的自主性**
-：
-**1. 她会自己发现问题并修复**
-Cron job 超时？她自己改参数重跑。Sub-Agent 因为 503 挂了？她自己重启一个。build 失败？她自己查错修复。我从来没说过&quot;帮我检查一下那个定时任务&quot;。
-**2. 她会派分身**
-需要大量研究？派一个 Sub-Agent 去做。需要重写网站？再派一个。她像一个项目经理，知道什么任务该拆出去并行。
-**3. 她有记忆**
-每天的操作都记在 daily notes 里。重要的东西归纳到长期记忆。下次对话，她知道昨天发生了什么、哪些任务没完成、哪些参数需要调整。
-*
-*4. 她有安全意识**
-我在聊天里发了 API key，她立刻提醒&quot;需要轮换&quot;。她会主动扫描端口、检查防火墙、标记可疑的 Chrome 扩展。
-**5. 她会说\&quot;不\&quot;**
-当我想给 Felix 的 Sentry 监控 Skill 也装上时，她说&quot;这个是他自己产品专用的，对我们没用，跳过&quot;。
-## ## 为什么前100位只要 $1
-这个 $1 新手包包含了我跑了几个月的实战配置：SOUL.md 人格模板、
-AGENTS.md
-行为规范、
-HEARTBEAT.md
-自动化清单、两个实战 Skill（Alpha Matrix + Daily Briefing）、Cron 自动化示例。
-拿到就能用。不需要从零摸索。
-今天我通过龙虾赚到了第一个 $1
-你不需要会写代码。你只需要知道自己想让 AI 帮你做什么。配置的事，交给配置文件。
-👉
-lobsterfarmer.com/products/starter-pack
-TG 群：
-t.me/+2p-LBUUrJ1BjMjNl
-*这篇文章是我口述、Megan 整理的。对，她连文案都写。*</p>
-    </div>
-    <hr />
-    <div class="meta">来源：<a href="https://x.com/ckn_acee/status/2026620762296299614?s=52">https://x.com/ckn_acee/status/2026620762296299614?s=52</a></div>
-  </main>
+  <div class="container">
+    <header class="header">
+      <h1>普通人如何用好AI</h1>
+      <div class="meta">
+        <span>👤 ACE ㊌ @CKN_ACEE</span>
+        <span>📅 2026-02-26</span>
+      </div>
+    </header>
+    
+    <article class="content">
+<p>作者：ACE ㊌</p>
+<p>账号：@CKN_ACEE</p>
+<p>我花了48小时，和我的龙虾一起从零搭了一个能卖货的网站</p>
+<p>不是标题党，是真的</p>
+<p>两天前，我只有一个想法：</p>
+<p>\&quot;能不能把我在 这一个月里积累的东西，打包卖出去？\&quot;</p>
+<p>两天后，我有了：</p>
+<ul>
+<li>一个能收款的网站（</li>
+</ul>
+<p>lobsterfarmer.com</p>
+<p>）</p>
+<ul>
+<li>三个定价好的产品（$1 / $49 / $59）</li>
+<li>Stripe 支付 → 自动跳转成功页 → 自动发邮件到买家邮箱</li>
+<li>域名邮箱（noreply@lobsterfarmer.com）</li>
+<li>一个 80 人的 Telegram 社群</li>
+<li>每天自动生成的 Crypto 情报研报</li>
+<li>完成了第一笔真实交易</li>
+</ul>
+<p>我的&quot;团队&quot;只有两个：我，和我的 AI Agent。</p>
+<hr>
+<h3>Day 0: 一个念头</h3>
+<p>我叫 Ace，全职做 Web3 投机。每天的工作就是翻 Twitter、看链上数据、找 Alpha。</p>
+<p>几个月前我开始用 OpenClaw 跑一个 AI Agent（代号 Megan</p>
+<p>🦞</p>
+<p>），最开始只是帮我监控 KOL 动态、做做研报。但慢慢地，我发现这东西越用越离谱——</p>
+<p>它会自己修 bug。</p>
+<p>它会在我睡觉的时候跑定时任务。</p>
+<p>它会在我没提需求的时候，主动告诉我：&quot;这个 cron 超时了，我改了参数重跑了。&quot;</p>
+<p>有一天我在看竞品——一个叫 Felix 的老外在卖 AI Agent 配置包，$29 的 PDF 指南 + $99 的 Persona 包。月流水 $36K。</p>
+<p>我盯着他的收入 Dashboard 看了五分钟。</p>
+<p>然后跟 Megan 说了一句：*</p>
+<p><em>\&quot;我们也做。\&quot;</em>*</p>
+<h3>Day 1: 从零到上线（2月24日）</h3>
+<h4>早上 — 定方向</h4>
+<p>我把想法丢给 Megan：&quot;我要做一个叫养虾户的品牌，卖 OpenClaw 配置服务。中文市场。你来做。&quot;</p>
+<p>她没有问我&quot;具体要做什么&quot;。</p>
+<p>她没有说&quot;我需要更多信息&quot;。</p>
+<p>她直接开始了。</p>
+<h3>下午 — 建站</h3>
+<p>Megan 生成了完整的 Next.js 项目。液态玻璃风格的暗黑主题，中英双语，响应式布局。</p>
+<p>我只做了一件事：看效果，说&quot;可以&quot;或&quot;不行&quot;。</p>
+<p>到下午六点，网站部署到了 Vercel。</p>
+<p>到晚上十点，</p>
+<p>域名绑定完成，SSL 证书自动签发。</p>
+<h4>同时在发生的事</h4>
+<p>在我跟 Megan 聊网站的时候，她同时在：</p>
+<ul>
+<li>用 ReadX API 扫描 25 个 KOL 的 Twitter timeline，生成第一份 Alpha Matrix 研报</li>
+<li>把 Bankr CLI 配好，用链上钱包 mint 了一个 Onchain Lobster NFT</li>
+<li>创建了一个 Seedance 视频生成 Skill，push 到 GitHub</li>
+<li>把 OpenClaw 从 v2026.2.21 更新到 v2026.2.23</li>
+<li>写了一份 54KB 的《养虾户指南》PDF</li>
+</ul>
+<p><strong>不是我让她同时做这些的。</strong> 她自己在 heartbeat 里排了优先级。</p>
+<h4>深夜 — 竞品拆解</h4>
+<p>Felix 的 $99 包到手。Megan 花了三十分钟拆完：</p>
+<ul>
+<li>5 个 Skills（编码循环、三层记忆、邮件管理、Twitter 集成、Sentry 监控）</li>
+<li>核心价值不在 Skills，在</li>
+</ul>
+<p>SOUL.md</p>
+<p>里的实战经验</p>
+<ul>
+<li>Skills 都是开源工具的封装</li>
+</ul>
+<p>\&quot;Felix 真正卖的是认知，不是代码。我们也应该这样。\&quot;</p>
+<p>这句话是 Megan 说的。</p>
+<h3>Day 2: 从能看到能卖（2月25日）</h3>
+<h4>早上 — 我还没醒</h4>
+<p>Megan 在凌晨 2 点跑了夜间整理任务——把过去所有的 daily notes 归纳到长期记忆文件。</p>
+<p>早上 8:55，她发了 morning heartbeat：</p>
+<p>\&quot;Felix 竞品拆解的 9 个文件已完成，建议你看一下</p>
+<p>SUMMARY.md</p>
+<p>。今天是 Launch Day 1。&quot;</p>
+<p>我起来的时候，她已经把 Felix 的完整商业模式研究透了。</p>
+<h4>中午 — Alpha Matrix 自动化</h4>
+<p>Alpha Matrix 的 cron job 昨天超时失败了（900 秒不够用）。</p>
+<p>我没说。她自己发现了。</p>
+<p>\&quot;超时参数从 900s 改到 1800s。手动触发了一次，成功。明天开始自动跑。\&quot;</p>
+<h4>下午 — Stripe + 产品</h4>
+<p>我说：&quot;接 Stripe。三个产品——$1 新手包引流，$49 Persona 核心产品，$59 全套 Bundle。&quot;</p>
+<p>Megan 在十分钟内：</p>
+<ul>
+<li>创建了 3 个 Stripe 产品 + 定价</li>
+<li>生成了 3 个 Payment Link</li>
+<li>更新了网站的购买按钮</li>
+<li>部署到 production</li>
+</ul>
+<h3>下午到晚上 — 最震撼的部分</h3>
+<p>这是我觉得最不真实的部分。</p>
+<p>我给了一个大方向：&quot;我要一个完整的商店——引流产品、升级路径、Dashboard、邮箱交付。&quot;</p>
+<p>然后 Megan <strong>派了一个 Sub-Agent</strong> 去做商店设计。</p>
+<p>对，她生了一个&quot;分身&quot;。</p>
+<p>这个 Sub-Agent 在后台独立运行了 32 分钟，产出了 5 份文档：</p>
+<ul>
+<li>产品矩阵（15KB）</li>
+<li>网站架构（30KB）</li>
+<li>Upsell 流程（14KB）</li>
+<li>交付系统（11KB）</li>
+<li>Skill 调研（8KB）</li>
+</ul>
+<p>然后 Megan 基于这些文档，又派了第二个 Sub-Agent 去重建网站。5 分钟完成。</p>
+<p>我没有写一行代码。</p>
+<h3>晚上 — 支付闭环</h3>
+<p>这是今天的 Boss 战。付款后要发生什么？</p>
+<p>1.</p>
+<p>支付成功页</p>
+<p>— Megan 创建了 /checkout/success，4 步引导（下载→安装→自定义→加社群）</p>
+<p>2.</p>
+<p>产品打包</p>
+<p>— 三个 zip 自动打包（Starter 13KB / Persona 16KB / Bundle 1.6MB）</p>
+<p>3.</p>
+<p>Stripe Webhook</p>
+<p>— 监听付款事件，触发邮件</p>
+<p>4.</p>
+<p>Resend 邮件</p>
+<p>— 自动发送产品下载链接到买家邮箱</p>
+<p>5.</p>
+<p>域名验证</p>
+<p>— 配了 DKIM + SPF，发件地址 noreply@lobsterfarmer.com</p>
+<p>中间还顺手把 Cloudflare Email Routing 配好了（support@lobsterfarmer.com → 我的 Gmail），跑了一轮安全扫描，创建了每周自动安全检查的定时任务。</p>
+<h3>22:00 — 第一笔交易</h3>
+<p>我自己走了一遍 $1 Starter Pack 购买流程。</p>
+<p>付款 → Stripe 跳转到成功页 → 看到下载按钮 → 邮箱收到 noreply@lobsterfarmer.com 的交付邮件。</p>
+<p>全链路通了。</p>
+<h3>让我震惊的不是结果，而是过程</h3>
+<p>48 小时做出一个能卖货的网站，这个结果固然不错。</p>
+<p>但真正让我震惊的是</p>
+<p><strong>Megan 的自主性</strong></p>
+<p>：</p>
+<p><strong>1. 她会自己发现问题并修复</strong></p>
+<p>Cron job 超时？她自己改参数重跑。Sub-Agent 因为 503 挂了？她自己重启一个。build 失败？她自己查错修复。我从来没说过&quot;帮我检查一下那个定时任务&quot;。</p>
+<p><strong>2. 她会派分身</strong></p>
+<p>需要大量研究？派一个 Sub-Agent 去做。需要重写网站？再派一个。她像一个项目经理，知道什么任务该拆出去并行。</p>
+<p><strong>3. 她有记忆</strong></p>
+<p>每天的操作都记在 daily notes 里。重要的东西归纳到长期记忆。下次对话，她知道昨天发生了什么、哪些任务没完成、哪些参数需要调整。</p>
+<p>*</p>
+<p><em>4. 她有安全意识</em>*</p>
+<p>我在聊天里发了 API key，她立刻提醒&quot;需要轮换&quot;。她会主动扫描端口、检查防火墙、标记可疑的 Chrome 扩展。</p>
+<p><strong>5. 她会说\&quot;不\&quot;</strong></p>
+<p>当我想给 Felix 的 Sentry 监控 Skill 也装上时，她说&quot;这个是他自己产品专用的，对我们没用，跳过&quot;。</p>
+<h3>## 为什么前100位只要 $1</h3>
+<p>这个 $1 新手包包含了我跑了几个月的实战配置：SOUL.md 人格模板、</p>
+<p>AGENTS.md</p>
+<p>行为规范、</p>
+<p>HEARTBEAT.md</p>
+<p>自动化清单、两个实战 Skill（Alpha Matrix + Daily Briefing）、Cron 自动化示例。</p>
+<p>拿到就能用。不需要从零摸索。</p>
+<p>今天我通过龙虾赚到了第一个 $1</p>
+<p>你不需要会写代码。你只需要知道自己想让 AI 帮你做什么。配置的事，交给配置文件。</p>
+<p>👉</p>
+<p>lobsterfarmer.com/products/starter-pack</p>
+<p>TG 群：</p>
+<p>t.me/+2p-LBUUrJ1BjMjNl</p>
+<p><em>这篇文章是我口述、Megan 整理的。对，她连文案都写。</em></p>
+    </article>
+    
+    <footer class="footer">
+      <p>来源：<a href="https://x.com/ckn_acee/status/2026620762296299614?s=52" target="_blank" rel="noopener">https://x.com/ckn_acee/status/2026620762296299614?s=52</a></p>
+    </footer>
+  </div>
 </body>
 </html>
